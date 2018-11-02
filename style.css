@@ -19,8 +19,100 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
+
+/* Style the header */
+.header {
+    text-align:center;
+    background-color: none;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width:200px;
+    height:100px;
+    margin-left:-100px;
+    margin-top:-50px;
+}
+
+.titles{
+  text-align:center;
+  background-color: none;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width:600px;
+  height:100px;
+  margin-left:-300px;
+  margin-top:-50px;
+}
+/* Style the navigation menu */
+nav {
+    width: 100%;
+    background: none;
+    padding: 10px; /*The distance between titles and iconimg*/
+}
+
+#topbar ul{
+  margin:0;
+  padding:0;
+  font-size: 0;
+  list-style:none;
+  letter-spacing: -10px;
+  word-spacing: -10px;
+}
+
+#topbar li{
+  width:100%;
+  display: inline-block;
+  margin-right: 15px;
+  float:left;
+  text-align:center;
+  letter-spacing: normal;
+  word-spacing: 1.3em;
+  font-size: 40px;
+  font-family: Impact, fantasy;
+    }
+
+/* Style the list inside the menu */
+a {
+color:#626567;
+font-weight:Normal;
+text-decoration:none;
+}
+
+a:hover {
+color:#424949;
+text-decoration:none;
+border-bottom: 1px #424949 solid;
+}
+
+
+.main {
+    width: 75%;
+    padding: 500px;
+    border: 2px solid DARKGRAY;
+    border-radius:10px;
+    /* box-shadow: 5px 5px 2px #888888; add shadow*/
+    clear: both;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left:-500px;
+    margin-top:-10px;
+    background-color: #FDFEFE;
+  }
+/* Style the content */
+
 
 h1 {
 display: block;
@@ -74,40 +166,4 @@ h5 {
     font-size: 20px;
     text-align: center;
     margin: 5;
-}
-
-/*side navigation*/
-.sidenav {
-    height: 100%;
-    width: 20%;
-    position: fixed;
-    margin: 5;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #E0DFD9 ;
-    overflow-x: hidden;
-    padding-top: 70px;
-}
-
-.sidenav a {
-    padding:6px 6px 6px;
-    text-decoration: none;
-    font-family:"Courier New";
-    font-size: 20px;
-    color: #3A392F;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #000000;
-}
-
-.main {
-    margin-left: 200px; /* Same as the width of the sidenav */
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
 }
