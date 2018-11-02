@@ -47,9 +47,9 @@ body {
   text-align: center;
   font-size: 35px;
   color: white;
-  position: absolute;
-  left: 50%;
-  top: 30%;
+  position: relative;
+  left: 0%;
+  top: 150px;
   width:600px;
   height:100px;
   margin-left:-300px;
