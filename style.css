@@ -53,8 +53,8 @@ body {
   font-size: 35px;
   color: white;
   position: relative;
-  left: 0%;
-  top: 150px;
+  left:100px;
+  top:10px;
   width:600px;
   height:100px;
   margin-left:-300px;
@@ -109,10 +109,10 @@ border-bottom: 1px #424949 solid;
     border-radius:10px;
     /* box-shadow: 5px 5px 2px #888888; add shadow*/
     clear: both;
-    position: absolute;
+    position: relative;
     float:inherit;
-    left: 50%;
-    top: 40%;
+    left: 100px;
+    top: 400px;
     margin-left:-500px;
     margin-top:-10px;
     background-color: #FDFEFE;
