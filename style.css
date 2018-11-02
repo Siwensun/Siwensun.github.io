@@ -98,13 +98,14 @@ border-bottom: 1px #424949 solid;
 
 
 .main {
-    width: 75%;
+    width: 50%;
     padding: 500px;
     border: 2px solid DARKGRAY;
     border-radius:10px;
     /* box-shadow: 5px 5px 2px #888888; add shadow*/
     clear: both;
     position: absolute;
+    float:inherit;
     left: 50%;
     top: 40%;
     margin-left:-500px;
