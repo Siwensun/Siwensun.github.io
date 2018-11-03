@@ -20,6 +20,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     font-family: Arial,  Helvetica, sans-serif;
+    background: rgba(200,194,174,0.3);
 
 }
 
@@ -90,13 +91,14 @@ nav {
 
 /* Style the list inside the menu */
 #topbar li a {
-color:#626567;
+color:#CDC7B5;
 font-weight:Normal;
+font-size: 0.5em;
 text-decoration:none;
 }
 
 #topbar li a:hover {
-color:#424949;
+color:#373530;
 text-decoration:none;
 border-bottom: 1px #424949 solid;
 }
@@ -105,7 +107,7 @@ border-bottom: 1px #424949 solid;
 .main {
     width: 50%;
     padding: 10% 20%;
-    border: 2px solid DARKGRAY;
+    /*border: 2px solid DARKGRAY;*/
     border-radius:10px;
     /* box-shadow: 5px 5px 2px #888888; add shadow*/
     clear: both;
@@ -113,7 +115,8 @@ border-bottom: 1px #424949 solid;
     left: 0px;
     top: 250px;
     margin-top:0px;
-    background-color: #FDFEFE;
+    background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
+
   }
 /* Style the content */
 
