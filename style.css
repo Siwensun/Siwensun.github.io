@@ -105,30 +105,32 @@ border-bottom: 1px #424949 solid;
 
 
 .main {
-    width: 50%;
+    width: 300%;
+    height: 300%;
     padding: 10% 20%;
     /*border: 2px solid DARKGRAY;*/
     border-radius:10px;
     /* box-shadow: 5px 5px 2px #888888; add shadow*/
     clear: both;
-    position: relative;
-    left: 0px;
-    top: 250px;
+    position: absolute;
+    left: -200px;
+    top: 200px;
     margin-top:0px;
     background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
 
   }
 
 .maincv {
-  width: 50%;
-  padding: 5%;
+  width: 300%;
+  height: 700%;
+  padding: 10% 20%;
   /*border: 2px solid DARKGRAY;*/
   border-radius:10px;
   /* box-shadow: 5px 5px 2px #888888; add shadow*/
   clear: both;
-  position: relative;
-  left: 0px;
-  top: 250px;
+  position: absolute;
+  left: -200px;
+  top: 200px;
   margin-top:0px;
   background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
 }
