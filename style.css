@@ -118,6 +118,20 @@ border-bottom: 1px #424949 solid;
     background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
 
   }
+
+.maincv{
+  width: 50%;
+  padding: 20%;
+  /*border: 2px solid DARKGRAY;*/
+  border-radius:10px;
+  text-align:center;
+  line-height:200px;
+  /* box-shadow: 5px 5px 2px #888888; add shadow*/
+  left: 0px;
+  top: 250px;
+  margin-top: 200px;
+  background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
+}
 /* Style the content */
 
 
