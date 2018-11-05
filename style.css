@@ -118,7 +118,7 @@ border-bottom: 1px #6E6A5F solid;
 
 
 
-.main {
+.mainabout {
     width: 300%;
     height: 300%;
     padding: 10% 20%;
@@ -136,7 +136,7 @@ border-bottom: 1px #6E6A5F solid;
 
 .maincv {
   width: 300%;
-  height: 600%;
+  height: 650%;
   padding: 10% 20%;
   /*border: 2px solid DARKGRAY;*/
   border-radius:10px;
@@ -148,6 +148,54 @@ border-bottom: 1px #6E6A5F solid;
   margin-top:0px;
   background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
 }
+
+.mainblog {
+    width: 300%;
+    height: 300%;
+    padding: 10% 20%;
+    /*border: 2px solid DARKGRAY;*/
+    border-radius:10px;
+    /* box-shadow: 5px 5px 2px #888888; add shadow*/
+    clear: both;
+    position: absolute;
+    left: -200px;
+    top: 200px;
+    margin-top:0px;
+    background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
+
+  }
+
+  .mainprojects {
+      width: 300%;
+      height: 300%;
+      padding: 10% 20%;
+      /*border: 2px solid DARKGRAY;*/
+      border-radius:10px;
+      /* box-shadow: 5px 5px 2px #888888; add shadow*/
+      clear: both;
+      position: absolute;
+      left: -200px;
+      top: 200px;
+      margin-top:0px;
+      background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
+
+    }
+
+    .maincontact {
+        width: 300%;
+        height: 300%;
+        padding: 10% 20%;
+        /*border: 2px solid DARKGRAY;*/
+        border-radius:10px;
+        /* box-shadow: 5px 5px 2px #888888; add shadow*/
+        clear: both;
+        position: absolute;
+        left: -200px;
+        top: 200px;
+        margin-top:0px;
+        background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
+
+      }
 /* Style the content */
 
 
