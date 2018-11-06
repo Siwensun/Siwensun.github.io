@@ -135,15 +135,15 @@ border-bottom: 1px #6E6A5F solid;
   }
 
 .maincv {
-  width: 300%;
-  height: 650%;
+  width: 500%;
+  height: 800%;
   padding: 10% 20%;
   /*border: 2px solid DARKGRAY;*/
   border-radius:10px;
   /* box-shadow: 5px 5px 2px #888888; add shadow*/
   clear: both;
   position: absolute;
-  left: -200px;
+  left: -400px;
   top: 200px;
   margin-top:0px;
   background-color: rgba(250,249,247,0.4);/*rgba(164,159,143,0.1);*/
