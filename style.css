@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 10px;
     box-sizing: border-box;
 }
 body {
@@ -116,7 +116,76 @@ text-decoration:none;
 border-bottom: 1px #6E6A5F solid;
 }
 
+.bloglist {
+  margin:0;
+  padding:0;
+  font-size: 0;
+}
 
+.bloglist a {
+  width:100%;
+  display:table;
+  font-weight:400px;
+  text-decoration:none;
+  color:#CDC7B5;
+  border-bottom:.05rem solid rgba(145,145,161,.15);
+  -webkit-transition:none;
+  transition:none;
+}
+
+.bloglist a:hover{
+  width:100%;
+  display:table;
+  font-weight:400;
+  color:#373530;
+  border-bottom:.05em solid rgba(145,145,161,.15);
+  -webkit-transition:none;
+  transition:none;
+}
+
+.bloglist a:hover .blogtitle{
+  padding-left:.4em;
+}
+
+
+/* Style the list inside the menu */
+.blogitem {
+  display: block;  /*block instead of inline */
+}
+
+.blogitem: before{
+  display: none;
+}
+
+.blogitem a span{
+  display:table-cell;
+  padding:5px 0; /* 各items间距 */
+  text-overflow:ellipsis;
+  -webkit-transition:all .2s ease-in-out;
+  transition:all .2s ease-in-out;
+}
+
+.blogitem a:before{
+  top:-.05rem;
+}
+
+.blogdate{
+  width:25%;
+  font-size: 30px;
+  margin-top: 10px;
+  text-overflow:ellipsis;
+  text-transform:uppercase;
+  line-height:30px;
+}
+
+.blogtitle{
+  font-size: 18px;
+  position: absolute;
+  margin-left: 15%;
+  margin-top: 10px;
+  font-family: Times;
+  text-align: left;
+}
 
 .mainabout {
     width: 300%;
