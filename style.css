@@ -189,7 +189,7 @@ border-bottom: 1px #6E6A5F solid;
 
 .mainabout {
     width: 300%;
-    height: 300%;
+    height: 310%;
     padding: 10% 20%;
     /*border: 2px solid DARKGRAY;*/
     border-radius:10px;
@@ -308,10 +308,13 @@ h3 {
 
 h4 {
     color: #696969;
-    font-family: Sans-serif;
+    font-family: initial;
     font-size: 15px;
-    text-align: left;
+    font-weight:200;
     margin: 5;
+    line-height: 150%;
+    text-align:justify;
+    vertical-align: middle;
 }
 
 h5 {
