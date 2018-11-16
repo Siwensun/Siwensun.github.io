@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<link rel="stylesheet" type="text/css" media="screen" href="blogstyle.css"/>
+<title>Kaggle TGS Competition Solution</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: 'Lucida Console',Consolas,'Courier',monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: '.'; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: 'Segoe UI Symbol', sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: -webkit-fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Open Sans Regular'),url('file:///Users/shanlinsun/Library/Application%20Support/abnerworks.Typora/themes/github/400.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Open Sans Italic'),url('file:///Users/shanlinsun/Library/Application%20Support/abnerworks.Typora/themes/github/400i.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Open Sans Bold'),url('file:///Users/shanlinsun/Library/Application%20Support/abnerworks.Typora/themes/github/700.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Open Sans Bold Italic'),url('file:///Users/shanlinsun/Library/Application%20Support/abnerworks.Typora/themes/github/700i.woff') format('woff');
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    /*background: url("file:///Users/shanlinsun/Library/Application%20Support/images/modules/styleguide/para.png") no-repeat 10px center;*/
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 4px 2px 4px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 0.2em 1em;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+ .typora-export p, .typora-export .footnote-line {white-space: normal;}
+</style>
+</head>
+<body class='typora-export' >
+  <div class="post-meta"><a href="../blog.html">← Blog</a></div>
+
+<div  id='write'  class = 'is-mac'><h1><a name='header-n0' class='md-header-anchor '></a>Kaggle Competition </h1><h1><a name='header-n2' class='md-header-anchor '></a>&#39;TGS Salt Identification Challenge&#39; </h1><h1><a name='header-n3' class='md-header-anchor '></a>Solution</h1><h3><a name='header-n4' class='md-header-anchor '></a>Method checklist:</h3><ul><li><a href='https://github.com/zhixuhao/unet'><strong>Unet</strong></a></li><li><a href='https://github.com/KaimingHe/deep-residual-networks'><strong>ResNet</strong></a>/<a href='https://github.com/facebookresearch/ResNeXt'><strong>ResNext</strong></a></li><li><strong>Data augmentation</strong></li><li><a href='https://siwensun.github.io/blog/Squeeze%20&%20Excitation%20Modules%20(SE%20Modules).html'><strong>Squeeze and excitation</strong></a></li><li><a href='https://arxiv.org/pdf/1411.5752.pdf'><strong>Hypercolumns</strong></a></li><li><strong>Deep Supervision</strong></li><li><a href='https://openreview.net/pdf?id=BJYwwY9ll'><strong>Snapshot Ensembles (cosine annealing)</strong></a></li><li><a href='https://arxiv.org/pdf/1708.02002.pdf'><strong>Focal Loss</strong></a>/ <a href='https://arxiv.org/pdf/1606.04797.pdf'><strong>Dice Loss</strong></a>/ [<strong>Lovesz-softmax Loss</strong>]</li></ul><p>I will mention some of the above methods directly in the following chapters without detailed explanations,  if you are willing to look into the specific method or algorithm, please check the corresponding links, plus, it is my pleasure to share you with my understanding via my other blogs.</p><h2><a name='header-n24' class='md-header-anchor '></a>How to begin?</h2><h3><a name='header-n25' class='md-header-anchor '></a>Data Exploration</h3><ul><li><strong>8000 training images, 18000 testing images</strong></li><li><strong>depth value associated with each image</strong></li><li><strong>image size 101 x 101 pixels</strong></li><li><strong>input grayscale images, label binary images</strong></li></ul><p>Thanks to the great work from <a href='https://www.kaggle.com/phoenigs/u-net-dropout-augmentation-stratification'><strong>Peter</strong></a>, we could view the distribution of data and some sample images stacked with labels.</p><p><img src='https://i.imgur.com/3aEGysy.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>The depth distribution is nearly normal, but actually in all versions of our solution, we fail to untilize this observation, but anyway, we will mention our attempts to add depth information into learning.</p><p><img src='https://i.imgur.com/fVIZcns.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>The bottom layer of the above images are the original train image, and the green masks indicate the area of salt in the original images. We could see from the above collection of example images that there exist some &#39;vertical&#39; masks in the train labels, which seems nonsense. In addition, there are about 39% of train labels are empty, which means no salt in those subsurfaces. Therefore, in order to improve the identification accuracy, we should consider two points: <strong>1. classify the empty and non-empty images; 2. identify the vertical-mask images. </strong>We will discusss them in the following.</p><h3><a name='header-n44' class='md-header-anchor '></a>Starter Soultion</h3><ul><li><strong>no data augmentation</strong></li><li><strong>no pre-trained encoder</strong></li><li><strong>no TTA (Test Time Augmentation)</strong> </li><li><strong>Adam: lr 0.01,  ReduceLROnPlateau(patience=5, factor=0.5, min_lr=0.0001)</strong></li><li><strong>loss: binary crossentropy loss</strong></li></ul><p>At the very begining, we only use the original UNet but we should resize the input image from 101 x 101 pixels to 128 x 128 pixels.  So, basically there isn&#39;t any trick in the starter solution and even it cannot provide the baseline performance, but all of our following soultions grow from it. Implemented by Keras, its local iou could achieve 0.74+. </p><p>&nbsp;</p><h2><a name='header-n58' class='md-header-anchor '></a>Baseline Solution</h2><ul><li><strong>introduce data augmentation: affine transform, flip, pad&amp;crop, intensity change</strong></li><li><strong>introduce resnet block but not pre-trained</strong></li><li><strong>introudce lovasz loss, which requires to train in two stages</strong></li></ul><p>I use <a href='https://github.com/aleju/imgaug'><strong>imgaug</strong></a> library to implement image augmentation except for horizontal flip of all train images and labels. I know sometimes, the &#39;torchvision.transforms&#39;  works well with the dataloader in Pytorch, but I insisit in &#39;imgaug&#39; due to its flexibility and capability. The below code snippet is an example of how I use it in this specific scenario (not completed version).</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">imgaug</span> <span class="cm-keyword">import</span> <span class="cm-variable">augmenters</span> <span class="cm-keyword">as</span> <span class="cm-variable">iaa</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">affine_seq</span> = <span class="cm-variable">iaa</span>.<span class="cm-property">Sequential</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># General</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">SomeOf</span>((<span class="cm-number">1</span>, <span class="cm-number">2</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [<span class="cm-variable">iaa</span>.<span class="cm-property">Fliplr</span>(<span class="cm-number">0.5</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Noop</span>(),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ]),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Affine</span>(<span class="cm-variable">rotate</span>=(<span class="cm-operator">-</span><span class="cm-number">5</span>, <span class="cm-number">5</span>), <span class="cm-variable">mode</span>=<span class="cm-string">'reflect'</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Crop</span>(<span class="cm-variable">px</span>=(<span class="cm-number">0</span>, <span class="cm-number">10</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">], <span class="cm-variable">random_order</span>=<span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">intensity_seq</span> = <span class="cm-variable">iaa</span>.<span class="cm-property">Sequential</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Sometimes</span>(<span class="cm-number">0.3</span>, <span class="cm-variable">iaa</span>.<span class="cm-property">ContrastNormalization</span>((<span class="cm-number">0.5</span>, <span class="cm-number">1.5</span>))),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">OneOf</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Noop</span>(),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Sequential</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">OneOf</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Add</span>((<span class="cm-operator">-</span><span class="cm-number">10</span>, <span class="cm-number">10</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">AddElementwise</span>((<span class="cm-operator">-</span><span class="cm-number">10</span>, <span class="cm-number">10</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Multiply</span>((<span class="cm-number">0.95</span>, <span class="cm-number">1.05</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">MultiplyElementwise</span>((<span class="cm-number">0.95</span>, <span class="cm-number">1.05</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  ]),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  ]),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">OneOf</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">GaussianBlur</span>(<span class="cm-variable">sigma</span>=(<span class="cm-number">0.0</span>, <span class="cm-number">1.0</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">AverageBlur</span>(<span class="cm-variable">k</span>=(<span class="cm-number">2</span>, <span class="cm-number">5</span>)),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  ])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">], <span class="cm-variable">random_order</span>=<span class="cm-keyword">False</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">resize_seq</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable cm-error">seq</span> = <span class="cm-variable">iaa</span>.<span class="cm-property">Sequential</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">affine_seq</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Scale</span>({<span class="cm-string">'height'</span>: <span class="cm-variable">IMG_TAR_SIZE</span>, <span class="cm-string">'width'</span>: <span class="cm-variable">IMG_TAR_SIZE</span>})</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ], <span class="cm-variable">random_order</span>=<span class="cm-keyword">False</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">seq</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 814px;"></div><div class="CodeMirror-gutters" style="display: none; height: 814px;"></div></div></div></pre><p>ResNet block could really provide more stable encoder performance, there are some different interpretations across the Internet, I think they all make sense to some extent. In my opinion, the main reason why ResNet block works lies in that &#39;shortcut&#39; enables error and information propagation (back or forward) across distant layers.</p><p>There are different depths of ResNet model, here I will take ResNet34 as an example and actually it is the best choice when no other improvment of models is introduced.</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">UNetResNet34</span>(<span class="cm-variable">nn</span>.<span class="cm-property">Module</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">dropout_2d</span>=<span class="cm-number">0.2</span>, <span class="cm-variable">pretrained</span>=<span class="cm-keyword">False</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">super</span>().<span class="cm-property">__init__</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span> = <span class="cm-variable">torchvision</span>.<span class="cm-property">models</span>.<span class="cm-property">resnet34</span>(<span class="cm-variable">pretrained</span>=<span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">conv1</span> = <span class="cm-variable">nn</span>.<span class="cm-property">Sequential</span>(<span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer0</span>.<span class="cm-property">conv1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer0</span>.<span class="cm-property">bn1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer0</span>.<span class="cm-property">relu1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">conv2</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">conv3</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">conv4</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">conv5</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer4</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 242px;"></div><div class="CodeMirror-gutters" style="display: none; height: 242px;"></div></div></div></pre><p>Lovasz Loss is the lovasz extension of IoU, so that the submodular funtion (IoU) is transformed to a convex function. Because IoU is exactly what we care about, so that optimizing lovasz loss function is a very good choice for segmentation tasks. But here is the problem, lovasz loss optimization is very sensitive to the initialization weight, and it is proved by our experiments that it is inefficient to use lovasz from the begining. What we apply is to train the model in two stage: first stage, the loss function is &#39;binary_cross_entropy_with_logits&#39;; second stage, the loss function is the customized &#39;lovasz loss&#39;. There is no modification between the first-stage and second-stage models.
+Using this solution, the local baseline iou can get to 0.82+.</p><p>&nbsp;</p><h2><a name='header-n73' class='md-header-anchor '></a>Improved Solution</h2><ul><li><strong>introduce pre-trained resnext50 blocks</strong></li><li><strong>introduce Hypercolumn and SCSE module</strong></li><li><strong>pad and resize augmentation</strong></li><li><strong>Use Dice Loss or Focal Loss in the first stage training</strong></li><li><strong>Change ReLu activation into eLU activation in Lovasz softmax loss computation</strong></li></ul><p>To make the model more robust, we tend to use wider resnext blocks. Here we choose the resnext50_32x4d pretrained weights, introducing &#39;cardinality&#39; into the original resnet model, bring about better feature description capability. How we use pretrained resnext50 blocks is similar the way we use the non-pretrained resnet34 blocks.</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">UNetResNext50</span>(<span class="cm-variable">nn</span>.<span class="cm-property">Module</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">dropout_2d</span>=<span class="cm-number">0.2</span>, <span class="cm-variable">pretrained</span>=<span class="cm-string">'imagenet'</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">super</span>(<span class="cm-variable">UNetResNext50_DS</span>, <span class="cm-variable-2">self</span>).<span class="cm-property">__init__</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span> = <span class="cm-variable">se_resnext50_32x4d</span>(<span class="cm-variable">pretrained</span>=<span class="cm-variable">pretrained</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder1</span> = <span class="cm-variable">nn</span>.<span class="cm-property">Sequential</span>(<span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer0</span>.<span class="cm-property">conv1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer0</span>.<span class="cm-property">bn1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer0</span>.<span class="cm-property">relu1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder2</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder3</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder4</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">encoder5</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">encoder</span>.<span class="cm-property">layer4</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 242px;"></div><div class="CodeMirror-gutters" style="display: none; height: 242px;"></div></div></div></pre><p>But the boost resulting from upgrade of pretrained model is not obvious, considering the small dataset we have. Thus, apart from applying deeper and wider model, we were considering some other techniques. Hypercolumn and SCSE modules are good choice which is shown by our experiment results.</p><p>I have discussed SCSE modules in detail in this blog, Hypercolumn is a technique proposed to improve fine-grained localization tasks. <strong>The main idea behind it is that the information in deeper layers may be &#39;too coarse spatially to allow precise localization&#39;, but the shallower layrers may be too fine-grained but nonsense in semantic level.</strong> Talk is cheap, show you the code.</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">forward</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">x</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-property">d5</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">decoder5</span>(<span class="cm-variable">f</span>,<span class="cm-variable">e5</span>) &nbsp; <span class="cm-comment">#d5.size()=(_,_,8,8)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">d4</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">decoder4</span>(<span class="cm-variable">d5</span>,<span class="cm-variable">e4</span>) &nbsp;<span class="cm-comment">#d4.size()=(_,_,16,16)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">d3</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">decoder3</span>(<span class="cm-variable">d4</span>,<span class="cm-variable">e3</span>) &nbsp;<span class="cm-comment">#d3.size()=(_,_,32,32)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">d2</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">decoder2</span>(<span class="cm-variable">d3</span>,<span class="cm-variable">e2</span>) &nbsp;<span class="cm-comment">#d2.size()=(_,_,64,64)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">d1</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">decoder1</span>(<span class="cm-variable">d2</span>) &nbsp; &nbsp; <span class="cm-comment">#d1.size()=(_,_,128,128)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">#hyper column</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">d</span> = <span class="cm-variable">torch</span>.<span class="cm-property">cat</span>((</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">d1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d2</span>, <span class="cm-variable">scale_factor</span>= <span class="cm-number">2</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d3</span>, <span class="cm-variable">scale_factor</span>= <span class="cm-number">4</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d4</span>, <span class="cm-variable">scale_factor</span>= <span class="cm-number">8</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d5</span>, <span class="cm-variable">scale_factor</span>=<span class="cm-number">16</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ), <span class="cm-number">1</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 352px;"></div><div class="CodeMirror-gutters" style="display: none; height: 352px;"></div></div></div></pre><p>Sometimes, fancy techniques may not result in big leap, while simple tricks may improve performance greatly in surprise. Pad and resize augmentation is one of them. This trick is proposed by <a href='https://www.kaggle.com/hengck23'>Heng CherKeng</a>, who is a very active contributor to the whole Kaggle community, willing to share many cutting-edge and insightful opinions in discussion. Respect. </p><p>Let&#39;s go back to the trick itself, the process is shown below.</p><p><img src='https://i.imgur.com/GSYVF54.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>Generally, there are two step: first, resize the image into the a bigger-scale image close to the desired input size; second, pad random value on the left, right, top and bottom side of the resized image, to get the exactly desired input size. Intuitively, it is more suitable to apply &#39;reflective&#39; padding rather than &#39;edge&#39; padding, but the experiment results show &#39;edge&#39; padding outperform &#39;reflective&#39; padding. Let&#39;s see the code snippet.</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">compute_random_pad</span>(<span class="cm-variable">limit</span>=(<span class="cm-operator">-</span><span class="cm-number">4</span>,<span class="cm-number">4</span>)):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dy</span>  = <span class="cm-variable">IMG_TAR_SIZE</span> <span class="cm-operator">-</span> <span class="cm-variable">IMG_ORI_SIZE</span><span class="cm-operator">*</span><span class="cm-variable">SCALE</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dy0</span> = <span class="cm-variable">dy</span><span class="cm-operator">//</span><span class="cm-number">2</span> <span class="cm-operator">+</span> <span class="cm-variable">np</span>.<span class="cm-property">random</span>.<span class="cm-property">randint</span>(<span class="cm-variable">limit</span>[<span class="cm-number">0</span>],<span class="cm-variable">limit</span>[<span class="cm-number">1</span>]) <span class="cm-comment"># np.random.choice(dy)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dy1</span> = <span class="cm-variable">dy</span> <span class="cm-operator">-</span> <span class="cm-variable">dy0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dx0</span> = <span class="cm-variable">dy</span><span class="cm-operator">//</span><span class="cm-number">2</span> <span class="cm-operator">+</span> <span class="cm-variable">np</span>.<span class="cm-property">random</span>.<span class="cm-property">randint</span>(<span class="cm-variable">limit</span>[<span class="cm-number">0</span>],<span class="cm-variable">limit</span>[<span class="cm-number">1</span>]) <span class="cm-comment"># np.random.choice(dy)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dx1</span> = <span class="cm-variable">dy</span> <span class="cm-operator">-</span> <span class="cm-variable">dx0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">dy0</span>, <span class="cm-variable">dx0</span>, <span class="cm-variable">dy1</span>, <span class="cm-variable">dx1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">resize_pad_seq</span>(<span class="cm-variable">pad_size</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dy0</span>, <span class="cm-variable">dx0</span>, <span class="cm-variable">dy1</span>, <span class="cm-variable">dx1</span> = <span class="cm-variable">compute_random_pad</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">seq</span> = <span class="cm-variable">iaa</span>.<span class="cm-property">Sequential</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">affine_seq</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Scale</span>({<span class="cm-string">'height'</span>: <span class="cm-variable">IMG_ORI_SIZE</span><span class="cm-operator">*</span><span class="cm-variable">SCALE</span>, <span class="cm-string">'width'</span>: <span class="cm-variable">IMG_ORI_SIZE</span><span class="cm-operator">*</span><span class="cm-variable">SCALE</span>}),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">iaa</span>.<span class="cm-property">Pad</span>(<span class="cm-variable">px</span>=(<span class="cm-variable">dy0</span>, <span class="cm-variable">dx0</span>, <span class="cm-variable">dy1</span>, <span class="cm-variable">dx1</span>), <span class="cm-variable">pad_mode</span>=<span class="cm-string">'edge'</span>, <span class="cm-variable">keep_size</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ], <span class="cm-variable">random_order</span>=<span class="cm-keyword">False</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">seq</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 352px;"></div><div class="CodeMirror-gutters" style="display: none; height: 352px;"></div></div></div></pre><p>In practice, there are some traps in applying data augmentation, the core is to apply the deterministic transformation to corresponding input images and labels, and the transformation applied on valid set should be very cautious. </p><p>Dice Loss and Focal Loss is designed to solve the similar problem that binary entropy loss cannot guide the way to improve IoU. Dice Loss is basically inverse to F1 score, so it is to deal with the problems arised from unbalanced labels. Focal Loss is modified version of entopy loss but it is able to foucs on dealing with those &#39;hard&#39; cases.</p><p>The reason why we use eLU instead of relu in lovasz softmax loss computation instead of ReLU, because we found the risk of gradient vanishing is quite high in this task, despite the existence of ReLU function in lovasz softmax function is not for activation but to follow the lovasz extention mathematical expression.</p><p>After all these methods added into our solution, optimized by SGD (more epoches needed), the local IoU could be improved up to 0.84+. </p><h3><a name='header-n99' class='md-header-anchor '></a>Stop and Think...</h3><p>0.84+ is not a bad result, but it is actually a bottleneck. To break through it, we should look back on the data itself. IoU means intersection over union, so that we could notice a problem that when we mislabel the same number of pixels in two images with different converage class (evaluate the area of salt in images), the IoU value would vary largely. Therefore, it would be much damage if we fail to tell the empty masks. I have tried many ways, but no one is more elegent and effective than the one below proposed by Heng. But I will mention some of my failed  attempts in the end.
+Another challenge is to correctly slice out the vertical mask boundary. Someone has design some rules to identify such masks, which would provide huge boost on public leaderboard score, but we don&#39;t implement this.</p><p>&nbsp;</p><h2><a name='header-n102' class='md-header-anchor '></a>Deep Supervision Model</h2><p>It is proposed by Heng in the discussion too. He was not the only one having realized the importance of tell non-empty and empty masks. We have tried some ways to identify empty masks and ensemble the final results from different models (maybe I would list our naive attempts in the end), but it is Heng who the first one in this competition found the right way to do so. It seems that Heng had developed a new version of semi-supervision model before the end of this competition, but I didn&#39;t practice it.</p><p>Normally, we use a classification model to identify empty masks and train another segmentation model to tell the salt sediment in the subsurface. It is not elegent at all, and it is quite aggresive because it won&#39;t expect any empty-mask images would be fed into the segmentation model which means if the empty masks are missed by the classification model, it is almost certain to let it go. In addition, It is quite simialr between the almost empty masks and the really empty masks, hard classification bettwen them is quite risky. Let see how does Deep Supervision Model do?</p><p><img src='https://i.imgur.com/8se64CP.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p><a href='https://www.kaggle.com/c/tgs-salt-identification-challenge/discussion/65933'>image source</a></p><p>The superfacial modification changes of our model is how we compute the loss. It is composed with three parts: classification loss (empty or non-empty masks), segmentation loss (for non-empty images) and segmentation loss (for all images). This helps because we optimize the encoder reconstruction ability and the encoder classification ability at the same time, instead of &#39;hard&#39; classifying the empty and the non-empty. And the emperimental performance proves this model&#39;s effectiveness. The key operations are all shown in the image, show you the code:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">Fuse_Loss</span>(<span class="cm-variable">nn</span>.<span class="cm-property">Module</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">pixel_loss_func</span>=<span class="cm-variable">Lovaz_Loss</span>(), <span class="cm-variable">weight_image</span>=<span class="cm-number">0.05</span>, <span class="cm-variable">weight_pixel</span>=<span class="cm-number">0.5</span>, <span class="cm-variable">weight</span>=<span class="cm-number">1</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">super</span>(<span class="cm-variable">Fuse_Loss</span>, <span class="cm-variable-2">self</span>).<span class="cm-property">__init__</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">image_loss_func</span> = <span class="cm-variable">F</span>.<span class="cm-property">cross_entropy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">pixel_loss_func</span> = <span class="cm-variable">pixel_loss_func</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">activation</span> = <span class="cm-variable">torch</span>.<span class="cm-property">sigmoid</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">weight_image</span> = <span class="cm-variable">weight_image</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">weight_pixel</span> = <span class="cm-variable">weight_pixel</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">weight</span> = <span class="cm-variable">weight</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">forward</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">logits</span>, <span class="cm-variable">logit_pixel</span>, <span class="cm-variable">logit_image</span>, <span class="cm-variable">truth_pixel</span>, <span class="cm-variable">truth_image</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">pixel_non_empty</span> = <span class="cm-variable">logit_pixel</span>[<span class="cm-variable">truth_image</span>,:,:,:]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">mask_non_empty</span> = <span class="cm-variable">truth_pixel</span>[<span class="cm-variable">truth_image</span>,:,:,:]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">loss_pixel</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">pixel_loss_func</span>(<span class="cm-variable">pixel_non_empty</span>, <span class="cm-variable">mask_non_empty</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">truth_image</span> = <span class="cm-variable">truth_image</span>.<span class="cm-property">type</span>(<span class="cm-variable">torch</span>.<span class="cm-property">LongTensor</span>).<span class="cm-property">to</span>(<span class="cm-variable">device</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">loss_image</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">image_loss_func</span>(<span class="cm-variable">logit_image</span>, <span class="cm-variable">truth_image</span>, <span class="cm-variable">reduction</span>=<span class="cm-string">'elementwise_mean'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">loss</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">pixel_loss_func</span>(<span class="cm-variable">logits</span>, <span class="cm-variable">truth_pixel</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable-2">self</span>.<span class="cm-property">weight_pixel</span><span class="cm-operator">*</span><span class="cm-variable">loss_pixel</span> <span class="cm-operator">+</span> <span class="cm-variable-2">self</span>.<span class="cm-property">weight_image</span><span class="cm-operator">*</span><span class="cm-variable">loss_image</span> <span class="cm-operator">+</span> <span class="cm-variable-2">self</span>.<span class="cm-property">weight</span><span class="cm-operator">*</span><span class="cm-variable">loss</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">UNetResNext50_DS</span>(<span class="cm-variable">nn</span>.<span class="cm-property">Module</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">dropout_2d</span>=<span class="cm-number">0.2</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">super</span>(<span class="cm-variable">UNetResNext50_DS</span>, <span class="cm-variable-2">self</span>).<span class="cm-property">__init__</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-property">self</span>.<span class="cm-property">fuse_pixel</span> = <span class="cm-variable">nn</span>.<span class="cm-property">Sequential</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">Conv2d</span>(<span class="cm-number">320</span>, <span class="cm-number">64</span>, <span class="cm-variable">kernel_size</span>=<span class="cm-number">3</span>, <span class="cm-variable">padding</span>=<span class="cm-number">1</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">ReLU</span>(<span class="cm-variable">inplace</span>=<span class="cm-keyword">True</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">logit_pixel</span>  = <span class="cm-variable">nn</span>.<span class="cm-property">Sequential</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">Conv2d</span>( <span class="cm-number">64</span>, <span class="cm-number">1</span>, <span class="cm-variable">kernel_size</span>=<span class="cm-number">1</span>, <span class="cm-variable">padding</span>=<span class="cm-number">0</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">fuse_image</span> = <span class="cm-variable">nn</span>.<span class="cm-property">Sequential</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">Conv2d</span>(<span class="cm-number">512</span><span class="cm-operator">*</span><span class="cm-number">4</span>, <span class="cm-number">64</span>, <span class="cm-variable">kernel_size</span>=<span class="cm-number">1</span>, <span class="cm-variable">groups</span>=<span class="cm-number">4</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">ReLU</span>(<span class="cm-variable">inplace</span>=<span class="cm-keyword">True</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">logit_image</span> = <span class="cm-variable">nn</span>.<span class="cm-property">Linear</span>(<span class="cm-number">64</span>, <span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">logit</span> = <span class="cm-variable">nn</span>.<span class="cm-property">Sequential</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">Conv2d</span>(<span class="cm-number">64</span><span class="cm-operator">+</span><span class="cm-number">64</span>, <span class="cm-number">64</span>, <span class="cm-variable">kernel_size</span>=<span class="cm-number">3</span>, <span class="cm-variable">padding</span>=<span class="cm-number">1</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">ReLU</span>(<span class="cm-variable">inplace</span>=<span class="cm-keyword">True</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">nn</span>.<span class="cm-property">Conv2d</span>( <span class="cm-number">64</span>, &nbsp;<span class="cm-number">1</span>, <span class="cm-variable">kernel_size</span>=<span class="cm-number">1</span>, <span class="cm-variable">padding</span>=<span class="cm-number">0</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">forward</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">x</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">#hyper column</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-property">d</span> = <span class="cm-variable">torch</span>.<span class="cm-property">cat</span>((</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">d1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d2</span>, <span class="cm-variable">scale_factor</span>= <span class="cm-number">2</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d3</span>, <span class="cm-variable">scale_factor</span>= <span class="cm-number">4</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d4</span>, <span class="cm-variable">scale_factor</span>= <span class="cm-number">8</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">d5</span>, <span class="cm-variable">scale_factor</span>=<span class="cm-number">16</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'bilinear'</span>, <span class="cm-variable">align_corners</span>=<span class="cm-keyword">False</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  ), <span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">d</span> = <span class="cm-variable">F</span>.<span class="cm-property">dropout2d</span>(<span class="cm-variable">d</span>, <span class="cm-variable">p</span>=<span class="cm-variable-2">self</span>.<span class="cm-property">dropout_2d</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">fuse_pixel</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">fuse_pixel</span>(<span class="cm-variable">d</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">logit_pixel</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">logit_pixel</span>(<span class="cm-variable">fuse_pixel</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">e</span> = <span class="cm-variable">F</span>.<span class="cm-property">adaptive_avg_pool2d</span>(<span class="cm-variable">e5</span>, <span class="cm-variable">output_size</span>=[<span class="cm-number">1</span>,<span class="cm-number">1</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">e</span> = <span class="cm-variable">F</span>.<span class="cm-property">dropout</span>(<span class="cm-variable">e</span>, <span class="cm-variable">p</span>=<span class="cm-variable-2">self</span>.<span class="cm-property">dropout_2d</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">fuse_image</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">fuse_image</span>(<span class="cm-variable">e</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">fuse_image_flatten</span> = <span class="cm-variable">fuse_image</span>.<span class="cm-property">view</span>(<span class="cm-variable">fuse_image</span>.<span class="cm-property">size</span>(<span class="cm-number">0</span>), <span class="cm-operator">-</span><span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">logit_image</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">logit_image</span>(<span class="cm-variable">fuse_image_flatten</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">logit</span> = <span class="cm-variable-2">self</span>.<span class="cm-property">logit</span>(<span class="cm-variable">torch</span>.<span class="cm-property">cat</span>([</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">fuse_pixel</span>, </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">F</span>.<span class="cm-property">interpolate</span>(<span class="cm-variable">fuse_image</span>.<span class="cm-property">view</span>(<span class="cm-variable">batch_size</span>,<span class="cm-operator">-</span><span class="cm-number">1</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>,),<span class="cm-variable">scale_factor</span>=<span class="cm-number">128</span>, <span class="cm-variable">mode</span>=<span class="cm-string">'nearest'</span>)],<span class="cm-number">1</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">logit</span>, <span class="cm-variable">logit_pixel</span>, <span class="cm-variable">logit_image</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1716px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1716px;"></div></div></div></pre><p>Using this deep supervision model, the Local IoU score can be lifted to 0.85+ or even 0.86+.</p><p>Until now, we almost touch the limit of single model, there exist some way to ensemble models. but it is a different story in computer vision tasks rather than normal machine learning problems. It requires you to have poweful computation capability. Training one deep supervision model on one fold to get to 0.85+ takes about 2 to 3 hour using the AWS E2C p3 x2large machine. Then you can imagine how expensive it is if you want to get enough independent models to enemble and no personal GPU(s). We don&#39;t have ours at that time, so we could only use the relatively cheap way. Cosine Annealing is our choice.</p><p>&nbsp;</p><h2><a name='header-n112' class='md-header-anchor '></a>Ensemble models</h2><ul><li><strong>K-fold</strong></li><li><strong>Cosine Annealing</strong></li></ul><p>First of all, as normal, use K-fold, which could make sure the result you get is trusted.</p><p>Second, if you buy the idea that ResNet can be seen as an ensemble of network, you might agree that cosine annealing is kind of an ensemble method. But the model snapshots saved in this method is definitely not independent. There is a similar method called &#39;SWA&#39; (<a href='https://arxiv.org/abs/1803.05407'>Averaging Weights Leads to Wider Optima and Better Generalization</a>), which is the same easy and seems to be better, we might try it later.</p><p>Cosine Annealing is a method to get one model after one &#39;cycle&#39;, which is a loop wraping epoches. At the end of each cycle, we save the model, and train a new one based on the last model we saved. At the beginning of each cycle, we set the learning rate as the same fixed value. The reduction curve of learning rate across cycles is like below (a little different from my implementation). We could see that, the curve within one cycle is cosine-like function and it decreases sharply, which is aim to reach the local minimum in a short time. </p><p><img src='https://i.imgur.com/zurv6tY.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>It is time-effcient because you don&#39;t need to train every model from very begining, instead, train one model from the one reaching the local minimum. However, for every fold, you should train a new set of models from the very beginning, otherwise, you will get the wrongly good result due to label leaks.</p><p>You can check my solution code to view how it is implemented, it is too long to post here. All in all, after ensembling, my local IoU score can increase 0.01+.</p><p>&nbsp;</p><h2><a name='header-n125' class='md-header-anchor '></a>Top ranker tricks</h2><p>This section will introduce the tricks we learn after the end of this competition, which are commonly shared with those top rankers. There are many factors that might decide your rank, but honestly, for me, hardware is the top objective factor. I don&#39;t know any top kaggler holding no powerful machine, which would save you from stuffs except for implementing your ideas. Maybe I would write a blog sharing my experience in efficiently use Kaggle kernel.</p><ul><li><strong>pseudo label (mean teacher method)</strong></li><li><strong>boundary location instead of salt segmentation</strong></li><li><strong>post processing</strong></li><li><strong>feature pyramid attention</strong></li></ul><p><a href='https://www.kaggle.com/vicensgaitan'>Vicens</a> did a great <a href='https://www.kaggle.com/c/tgs-salt-identification-challenge/discussion/66940'>job</a> in view the patches in a big mosaics, acutally we have tried this before but our motivation is for data augmentation that is generate more training data by cuting patches across original patches. But here are more problem arised. The minor problem is the host of the competition has already done the arbitrary intensity transformation. The medium problem is the depth information is fake, as can be seen from the mosaics below, the depth value varies greatly among neighbor patches. These two problems won&#39;t affect our training and predicting much, and actually nobody joining this competition could use the depth information probably.</p><p><img src='https://i.imgur.com/98BiOC7.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>The real big problem is the mask, there is no full salt masks in the whole training set. That is not real, look at the <a href='https://www.kaggle.com/c/tgs-salt-identification-challenge/discussion/68949'>image</a> below.</p><p><img src='https://i.imgur.com/AVVNZht.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>The full salt mask are labeled as empty in the training set, but actually it would not ruin our model totally, why? To save memory, the way we encode our predicted images is actually record the pixel value change points. Thus, there is no difference between full salt images and empty images in our submission file. Even though it is not a problem in submission, but really troublesome in training because it is likely the same texture get the opposite labels. Therefore, we have been dealing with a wrong problem, the real problem should be a boundary location task instead of a segmentstion task. There is a clever method to deal with such problem and modification of our original design is almost none. Change the loss function into a symmetric one, which looks like:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 7.609375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">Sym_Lovaz_Loss</span>(<span class="cm-variable">nn</span>.<span class="cm-property">Module</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">per_image</span>=<span class="cm-keyword">True</span>, <span class="cm-variable">ignore</span>=<span class="cm-keyword">None</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">super</span>(<span class="cm-variable">Sym_Lovaz_Loss</span>, <span class="cm-variable-2">self</span>).<span class="cm-property">__init__</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">per_image</span> = <span class="cm-variable">per_image</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">ignore</span> = <span class="cm-variable">ignore</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">forward</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">logits</span>, <span class="cm-variable">targets</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">loss</span> = (<span class="cm-variable">lovasz_hinge</span>(<span class="cm-variable">logits</span>.<span class="cm-property">squeeze</span>(<span class="cm-number">1</span>), <span class="cm-variable">targets</span>.<span class="cm-property">squeeze</span>(<span class="cm-number">1</span>), <span class="cm-variable-2">self</span>.<span class="cm-property">per_image</span>, <span class="cm-variable-2">self</span>.<span class="cm-property">ignore</span>)<span class="cm-operator">+</span><span class="cm-variable">lovasz_hinge</span>(<span class="cm-operator">-</span><span class="cm-variable">logits</span>.<span class="cm-property">squeeze</span>(<span class="cm-number">1</span>), <span class="cm-number">1</span><span class="cm-operator">-</span><span class="cm-variable">targets</span>.<span class="cm-property">squeeze</span>(<span class="cm-number">1</span>), <span class="cm-variable-2">self</span>.<span class="cm-property">per_image</span>, <span class="cm-variable-2">self</span>.<span class="cm-property">ignore</span>))<span class="cm-operator">/</span><span class="cm-number">2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">loss</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 242px;"></div><div class="CodeMirror-gutters" style="display: none; height: 242px;"></div></div></div></pre><p>It is from <a href='https://www.kaggle.com/tugstugi'>tugstugi</a> and the reason why it works is the symmetric loss would only care about where the bounary it rather than whether specific texture means positive or not. </p><p>Most of the top ranker apply all kinds of heavy post-processing but most of them are not general. In other word, these post operations are based on the deep understanding of this specific data. </p><p>There are many designs of realizing attention mechanism and most them are not very complicated (eapecially in terms of semantic segmentation), but it seems to be very ambiguous to explain why does such design plays the role of attention mechanism. </p><p><img src='https://i.imgur.com/58o6VUr.png' alt='Imgur' referrerPolicy='no-referrer' /></p><p>This FPA module could be inserted in the center of a segmatation, it looks quite like the convolution-connected Hypercolumn. Therefore, I don&#39;t seriously take it as the &#39;attention&#39; module, it is just works for fine-grain. I won&#39;t deny its effectiveness but it shouldn&#39;t be the reason whether your solution is good or not. </p></div>
+
+<div class=page_comments>
+  <h4 class="page_comments-title">Leave a Comment</h4>
+<section id="disqus_thread"></section>
+</div>
+<script>
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://megxu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</body>
+</html>
