@@ -15,7 +15,7 @@ a:active, a:hover { outline: 0px; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
+body.typora-export { padding-left: 0px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export p { white-space: pre-wrap; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
@@ -594,7 +594,14 @@ header, .context-menu, .megamenu-content, footer{
 </style>
 </head>
 <body class='typora-export' >
-  <div class="post-meta"><a href="../blog.html">← Blog</a></div>
+  <header>
+    <nav id="navbarr">
+
+      <ul>
+        <li><a href="../blog.html">← Blog</a></li>
+      </ul>
+    </nav>
+  </header>
 <div  id='write'  class = 'is-mac'><p>&nbsp;</p><h1><a name='header-n2' class='md-header-anchor '></a>Squeeze &amp; Excitation Modules (SE Modules)</h1><p>All my understanding is based on the below two papers:</p><ul><li><a href='https://arxiv.org/pdf/1803.02579.pdf'>Concurrent Spatial and Channel ‘Squeeze &amp; Excitation’ in Fully Convolutional Networks</a></li><li><a href='https://arxiv.org/pdf/1709.01507.pdf'>Squeeze-and-Excitation Networks</a></li></ul><p>SE blocks have shown their power in both classification and segmentation tasks, and fortunately, they can be seamlessly integrated within any CNN model.</p><h2><a name='header-n10' class='md-header-anchor '></a>What is it?</h2><p><strong>A good picture is more than thousands of words.</strong></p><p><img src='https://i.imgur.com/5btTIF0.png' alt='Architectural configuration of the cSE, sSE and scSE blocks are shown in (a), (b) and (c), respectively.' referrerPolicy='no-referrer' /></p><p>From the architectural configuration above, the most straightforward impression we could get is the blocks with different colors within the same batch of images. A very important charasteristic of conventional layer is to share weights spatially, which actually hypothesize the local pattern as the whole spatial pattern. SE modules is design to improve the representation of spatial and channel information respectively.
 To make the channel and spatial information jointly improved, provided we only tune them by weighting respectively, it is natural to let them decided by each other. Its nomenclature tells us how it is designed:</p><p>&nbsp;</p><blockquote><p><font size="5"><strong>&quot;The SE block ‘squeezes’ along the spatial domain and ‘excites’ or reweights along the channels.&quot;</strong></font></p></blockquote><p>&nbsp;</p><p>In fact, this quote only illustrates the principal of cSE, which is described as the image(a). Naturally, the principal of <strong>sSE module</strong> can be summarized as &quot;the SE block &#39;squeezes&#39; along the channel-wise domain and &#39;excite&#39; spatially&quot;. More mathematically, the cSE module can be expressed as:</p><p>&nbsp;</p><p class='md-math-block'><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n20" cid="n20" mdtype="math_block">
 
@@ -630,6 +637,7 @@ To make the channel and spatial information jointly improved, provided we only t
   (d.head || d.body).appendChild(s);
   })();
   </script>
+  <script src="nav.js"></script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>
