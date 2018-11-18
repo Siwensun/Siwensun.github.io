@@ -6,13 +6,14 @@ aside{
     bottom:0;
 }
 
+/*
 .post-meta{
   position: fixed;
   left: 50px;
   top: 2px;
   margin-top:1px;
 }
-
+*/
 .page_comments{
   max-width: 860px;
   margin: 0px auto;
@@ -39,4 +40,30 @@ aside{
   border-radius: 3px;
   color: rgb(119, 119, 119);
   margin-top: 0px;
+}
+
+/*blog navbar*/
+#navbar {
+  z-index: 5555; /*FLOAT ON THE TOP. MAGIC....:)*/
+  background-color: rgba(200,194,174);
+  position: fixed; /* Make it stick/fixed */
+  top: -50px; /* Hide the navbar 50 px outside of the top view */
+  width: 100%; /* Full width */
+  display: block;
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px; /*宽窄*/
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
