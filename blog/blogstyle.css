@@ -69,7 +69,7 @@ header {
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 2px; /*宽窄*/
+  padding: -1px; /*文字位置*/
   text-decoration: none;
   font-size: 17px;
 }
@@ -78,7 +78,7 @@ header {
   background-color: rgba(200,194,174);
   color: black;
   text-align: center;
-  padding: 2px; /*宽窄*/
+  padding: 2px; /*文字位置*/
   text-decoration: none;
 }
 
