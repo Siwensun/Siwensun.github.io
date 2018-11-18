@@ -76,14 +76,16 @@ header {
 
 #navbarr li a:hover {
   background-color: rgba(200,194,174);
-  color: black;
+  color: #373530;
   text-align: center;
   padding: 2px; /*文字位置*/
   text-decoration: none;
 }
 
 
-/*blog navbar*/
+
+
+/*blog navbar div version*/
 #navbar {
   z-index: 5555; /*FLOAT ON THE TOP. MAGIC....:)*/
   background-color: rgba(200,194,174);
