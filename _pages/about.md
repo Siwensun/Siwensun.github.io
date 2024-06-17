@@ -15,7 +15,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a 4th-year **Ph.D. student** in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. 【Xiaohui Xie](https://ics.uci.edu/~xhx/). I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) in 2019 and my Bachelor's degree from [Beihang University](https://yqgdxy.buaa.edu.cn/) (BUAA) in 2017.
+I am a 4th-year **Ph.D. student** in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) in 2019 and my Bachelor's degree from [Beihang University](https://yqgdxy.buaa.edu.cn/) (BUAA) in 2017.
 
 My primary research interests are at the intersection of **computer vision, computer graphics and generative AI**. Additionally, I have been actively engaged in medical image analysis.
 
