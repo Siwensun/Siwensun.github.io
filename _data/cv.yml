@@ -43,26 +43,40 @@
       institution: NEC Labs America
       year: 2024.06 - 2024.09
       description:
-        - 
+        - Inverse rendering related project ongoing ...
     - title: Research Intern
       institution: NEC Labs America
       year: 2023.06 - 2023.09
       description:
-        - 
+        - Participated in long-horizon closed-loop neural sensor simulator project. 
+        - With a single recorded log captured by a sensor-equipped vehicle, our simulator can synthesize a realistic closed-loop RGB video. 
+        - Built upon neural radiance field, Lidar and high-definition map are demonstrated to be useful in extrapolated traffic scene synthesis scenario.
+        - Parts of our project leads to CVPR 2024 hightlights paper (LidaRF) and oral presentation at DDADS workshop.
     - title: Machine Learning Engineer
       institution: Deepvoxel, Inc.
       year: 2019.08 - 2021.05
       description:
-        - 
+        - Developed deep learning-based organs-at-risk delineation algorithm for more than 50 anatomical structures from
+whole-body CT scans. 
+        - Integrate our algorithms into their first FDA-cleared product, which was applied by several
+medical institutions in radiology treatment planning.
+        - Parts of our algorithm lead to domain top-tier journal Radiotherapy and Oncology paper (WBNet).
 
 - title: Competitions
   type: time_table
   contents:
-    - title: First prize at Race On! Self-Driving Car Competition
+    - title: StructSeg 2019  (9th out of 100 teams)
+      year: 2019
+      institution: MICCAI Challenge
+      description: participated in the first task in this automatic structure segmentation challenge on organs-at-risk (OAR)segmentation from head & neck CT scans.
+    - title: Race On! Self-Driving Car Competition (1st out of 42 teams)
       year: 2019
       institution: Ming Hsieh Department of Electrical & Computer Engineering
-      description: This competition was held by Ming Hsieh Institute, whose final race track includes multiple turns, straight lines and intersections. 
-      rank: Out of 42 teams, our team won the first prize.
+      description: Final race track includes multiple turns, straight lines and intersections. 
+    - title: Part-of-Speech Tagging Competition (1st out of 191 students)
+      year: 2019
+      institution: Ming Hsieh Department of Electrical & Computer Engineering
+      description: Given restricted computation power and training time, got the first place on the test data in both Japanese and Italian.
 
 
 - title: Honors and Awards
@@ -71,4 +85,7 @@
     - title: Dean’s Award from ICS department, UCI 
       year: 2020
       institution: Donald Bren School of Information and Computer Sciences
+    - title: China's Scholarship Council (CSC) Award
+      year: 2017
+      institution: Beihang Univeristy 
     
