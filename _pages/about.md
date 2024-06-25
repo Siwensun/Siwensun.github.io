@@ -22,7 +22,7 @@ My primary research interests are at the intersection of **computer vision, comp
 **Currently**, I am focusing on three research topics:
 
 - Synthesizing diverse 4D data paired with **detailed text descriptions**,
-- Reconstructing 3D/4D scenes from **3D-inconsistent** synthesized videos, and
+- Generating **relightable** 3D object/scene from single/few observations, and
 - **"Inverting"** controllable generative models for perceptual understanding. 
 
 I am open to research collaborations and job opportunities. Feel free to reach out to me via email at shanlins<span style="color:orange">[at]</span>uci<span style="color:orange">[dot]</span>edu.
