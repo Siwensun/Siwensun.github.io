@@ -320,14 +320,14 @@
         <div style="text-align: center;">{% include video.liquid path=entry.video class="img-fluid rounded z-depth-1" controls=true %}</div>
       </div>
     {% endif %}
-  </div>
 
-  <!-- Add this block for the note -->
-  {% if entry.note %}
-    <br>
-    <div class="notes">
-      <strong>TD,LR:</strong> {{ entry.note | markdownify }}
-    </div>
-  {% endif %}
+    <!-- Add this block for the note -->
+    {% if entry.note %}
+      <br>
+      <div class="notes">
+        <strong>TD,LR:</strong> {{ entry.note | markdownify }}
+      </div>
+    {% endif %}
+  </div>
   
 </div>
