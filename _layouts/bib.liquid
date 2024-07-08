@@ -166,9 +166,6 @@
     <div class="periodical">
       {{ periodical | strip }}
     </div>
-    <div class="periodical">
-      {{ entry.note | strip }}
-    </div>
 
     <!-- Links/Buttons -->
     <div class="links">
@@ -324,4 +321,13 @@
       </div>
     {% endif %}
   </div>
+
+  <!-- Add this block for the note -->
+  {% if entry.note %}
+    <br>
+    <div class="notes">
+      <strong>TD,LR:</strong> {{ entry.note | markdownify }}
+    </div>
+  {% endif %}
+  
 </div>
