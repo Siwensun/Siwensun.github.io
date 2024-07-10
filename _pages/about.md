@@ -27,6 +27,5 @@ My primary research interests are at the intersection of **computer vision, comp
 - **Image Relighting/Decomposition** via repurposing diffusion-based generative model. 
 
 <p style="color: red;">
-I am on the job market, looking for research scientist / engineer positions: part-time internships before summer 2025 and full-time positions starting from summer 2025. Happy to be connected at
-</p>
-**shanlins[at]uci[dot]edu.**
+I am on the job market, looking for research scientist / engineer positions: part-time internships before summer 2025 and full-time positions starting from summer 2025. 
+</p> Happy to be connected at **shanlins[at]uci[dot]edu.**
