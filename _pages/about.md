@@ -15,14 +15,17 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a 4th-year **Ph.D. student** in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) in 2019 and my Bachelor's degree from [Beihang University](https://yqgdxy.buaa.edu.cn/) (BUAA) in 2017.
+I am a 4th-year **Ph.D. student** in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). 
 
-My primary research interests are at the intersection of **computer vision, computer graphics and generative AI**. Additionally, I have been actively engaged in medical image analysis.
+Earlier, I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) and my Bachelor's degree from [Beihang University](https://yqgdxy.buaa.edu.cn/) (BUAA).
 
-**Currently**, I am focusing on three research topics:
+My primary research interests are at the intersection of **computer vision, computer graphics and generative AI**. Also, I have been actively engaged in medical image analysis.
 
-- Synthesizing diverse 4D data paired with **detailed text descriptions**,
-- Generating **relightable** 3D object/scene from single/few observations, and
-- **Repurposing** image generation models for image decomposition. 
+**Currently**, I am working on:
 
-I am open to research collaborations and job opportunities. Feel free to reach out to me via email at shanlins<span style="color:orange">[at]</span>uci<span style="color:orange">[dot]</span>edu.
+- **Human Motion Editing** given text instruction and trajectory guidance,
+- **Image Relighting/Decomposition** via repurposing diffusion-based generative model. 
+
+<p style="color: red;">
+I am on the job market, looking for research scientist / engineer positions: part-time internships before summer 2025 and full-time positions starting from summer 2025. Happy to be connected at <span style="color: black;">shanlins[at]uci[dot]edu</span>.
+</p>
