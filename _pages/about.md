@@ -24,7 +24,7 @@ My primary research interests are at the intersection of **computer vision, comp
 **Currently**, I am working on:
 
 - **Human Motion Editing** given text instruction and trajectory guidance,
-- **Image Relighting/Decomposition** via repurposing diffusion-based generative model. 
+- **Image Relighting/Decomposition** by repurposing diffusion-based generative model. 
 
 <p style="color: red;">
 I am on the job market, looking for research scientist / engineer positions: part-time internships before summer 2025 and full-time positions starting from summer 2025. 
