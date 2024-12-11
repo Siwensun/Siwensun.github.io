@@ -15,7 +15,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a final-year **Ph.D. candidate** in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). 
+I am a final-year Ph.D. student in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). 
 
 Earlier, I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) and my Bachelor's degree from [Beihang University](https://yqgdxy.buaa.edu.cn/) (BUAA).
 
