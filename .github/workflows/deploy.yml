@@ -11,6 +11,7 @@ on:
       - "**.js"
       - "**.liquid"
       - "**/*.md"
+      - "**/*.bib"
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
