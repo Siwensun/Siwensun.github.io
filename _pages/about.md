@@ -17,7 +17,7 @@ social: true # includes social icons at the bottom of the page
 
 I am a final-year Ph.D. student in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). 
 
-Earlier, I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) and my Bachelor's degree from [Beihang University](https://yqgdxy.buaa.edu.cn/) (BUAA).
+Earlier, I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) and my Bachelor's degree from [Beihang University](https://en.wikipedia.org/wiki/Beihang_University) (BUAA).
 
 My primary research interests are at the intersection of **computer vision, computer graphics and generative AI**. Also, I have been actively engaged in medical image analysis.
 
