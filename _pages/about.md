@@ -26,6 +26,6 @@ My primary research interests are at the intersection of **computer vision, comp
 - **Text-Driven Human Motion Generation** with multi-modal agents,
 - **Image Decomposition and Composition** by repurposing generative model. 
 
-<p style="color: red;">
-I am on the job market, looking for research scientist / engineer positions: part-time internships before summer 2025 and full-time positions starting from summer 2025. 
+<p style="color: orange;">
+I am looking for research scientist / engineer positions: part-time internships or full-time positions starting from summer 2025. 
 </p> Happy to be connected at **shanlins[at]uci[dot]edu.**
