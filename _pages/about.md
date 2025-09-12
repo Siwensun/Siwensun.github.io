@@ -15,17 +15,18 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a final-year Ph.D. student in the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). 
+I am a research scientist at Meta, working on video generation. My primary research interests are at the intersection of **computer vision, computer graphics and generative AI**.
 
-Earlier, I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) and my Bachelor's degree from [Beihang University](https://en.wikipedia.org/wiki/Beihang_University) (BUAA).
+Before that, I graduated as Ph.D. from the [Department of Computer Science at University of California, Irvine](https://cs.ics.uci.edu/) (UCI), advised by Prof. [Xiaohui Xie](https://ics.uci.edu/~xhx/). 
 
-My primary research interests are at the intersection of **computer vision, computer graphics and generative AI**. Also, I have been actively engaged in medical image analysis.
+Earlier, I obtained my Master's degree from [University of Southern California](https://minghsiehece.usc.edu/) (USC) and Bachelor's degree from [Beihang University](https://en.wikipedia.org/wiki/Beihang_University) (BUAA).
 
-**Currently**, I am working on:
+<!-- **Currently**, I am working on:
 
 - **Text-Driven Human Motion Generation** with multi-modal agents,
-- **Image Decomposition and Composition** by repurposing generative model. 
+- **Image Decomposition and Composition** by repurposing generative model.  -->
 
-<p style="color: orange;">
-I am looking for research scientist / engineer positions: part-time internships or full-time positions starting from summer 2025. 
-</p> Happy to be connected at **shanlins[at]uci[dot]edu.**
+<!-- <p style="color: orange;">
+I am looking for research scientist / engineer positions: part-time internships or full-time positions starting from summer 2025. -->
+
+<!-- Happy to be connected at **shanlins[at]uci[dot]edu.**  -->
